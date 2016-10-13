@@ -32,10 +32,12 @@ struct node * free_list(struct node *beginning){
   if(beginning == NULL){
     return beginning;
   }
-  if(free_list(beginning->next) == NULL){
-    //beginning->i = NULL;
-    free(beginning);
+  if((beginning->next) == NULL){
+ free(beginning);
+    return NULL;
   }
+  free_list(beginning->next);
+  free(beginning);
   return NULL;
 }
 
